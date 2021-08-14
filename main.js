@@ -1,5 +1,5 @@
 const calculator = {
-  displayValue: '0',
+  displayValue: "0",
   firstOperand: null,
   waitingForSecondOperand: false,
   operator: null,
@@ -12,14 +12,14 @@ function inputDigit(digit) {
     calculator.displayValue = digit;
     calculator.waitingForSecondOperand = false;
   } else {
-    calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+    calculator.displayValue =
+      displayValue === "0" ? digit : displayValue + digit;
   }
-  console.log(calculator);
 }
 
 function inputDecimal(dot) {
   if (calculator.waitingForSecondOperand === true) {
-    calculator.displayValue = '0.';
+    calculator.displayValue = "0.";
     calculator.waitingForSecondOperand = false;
     return;
   }
@@ -33,41 +33,41 @@ function handleOperator(nextOperator) {
   const { firstOperand, displayValue, operator } = calculator;
   const inputValue = parseFloat(displayValue);
 
-  if (operator && calculator.waitingForSecondOperand)  {
+  if (operator && calculator.waitingForSecondOperand) {
     calculator.operator = nextOperator;
-    console.log(calculator);
     return;
   }
 
-   if (firstOperand === null && !isNaN(inputValue)) {
-     calculator.firstOperand = inputValue;
-   } else if (operator) {
-     const result = calculate(firstOperand, inputValue, operator);
+  if (firstOperand === null && !isNaN(inputValue)) {
+    calculator.firstOperand = inputValue;
+  } else if (operator) {
+    const result = calculate(firstOperand, inputValue, operator);
 
-     calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
-     calculator.firstOperand = result;
-   }
-   calculator.waitingForSecondOperand = true;
-   calculator.operator = nextOperator;
-   console.log(calculator);
+    calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+    calculator.firstOperand = result;
+  }
+  calculator.waitingForSecondOperand = true;
+  calculator.operator = nextOperator;
 }
 
+// Handle calculations
 function calculate(firstOperand, secondOperand, operator) {
-  if (operator === '+') {
+  if (operator === "+") {
     return firstOperand + secondOperand;
-  } else if (operator === '-') {
+  } else if (operator === "-") {
     return firstOperand - secondOperand;
-  } else if (operator === '*') {
+  } else if (operator === "*") {
     return firstOperand * secondOperand;
-  } else if (operator === '/') {
+  } else if (operator === "/") {
     return firstOperand / secondOperand;
   }
 
   return secondOperand;
 }
 
+// Reset calculator
 function resetCalculator() {
-  calculator.displayValue = '0';
+  calculator.displayValue = "0";
   calculator.firstOperand = null;
   calculator.waitingForSecondOperand = false;
   calculator.operator = null;
@@ -75,42 +75,42 @@ function resetCalculator() {
 }
 
 function updateDisplay() {
-  const display = document.querySelector('.calculator-screen');
+  const display = document.querySelector(".calculator-screen");
   display.value = calculator.displayValue;
 }
 
 updateDisplay();
 
-const keys = document.querySelector('.calculator-keys');
+const keys = document.querySelector(".calculator-keys");
 
-keys.addEventListener('click', (event) => {
+keys.addEventListener("click", (event) => {
   // Access the clicked element
   const { target } = event;
   const { value } = target;
+
   //Check if clicked element is a button. If not, exit the function
-  if (!target.matches('button')) {
+  if (!target.matches("button")) {
     return;
   }
 
   switch (value) {
-    case '+':
-    case '-':
-    case '*':
-    case '/':
-    case '=':
+    case "+":
+    case "-":
+    case "*":
+    case "/":
+    case "=":
       handleOperator(value);
       break;
-    case '.':
+    case ".":
       inputDecimal(value);
       break;
-    case 'all-clear':
+    case "all-clear":
       resetCalculator();
       break;
     default:
-
-    if (Number.isInteger(parseFloat(value))) {
-      inputDigit(value);
-    }
+      if (Number.isInteger(parseFloat(value))) {
+        inputDigit(value);
+      }
   }
   updateDisplay();
-})
+});

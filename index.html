@@ -2,43 +2,69 @@
 <html>
   <head>
     <title>Javascript Calculator</title>
-    <link rel="stylesheet" href="main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
 
   <body>
     <div class="calculator">
-
       <input type="text" class="calculator-screen" value="" disabled />
-      
+
       <div class="calculator-keys">
-        
         <button type="button" class="operator" value="+">+</button>
         <button type="button" class="operator" value="-">-</button>
         <button type="button" class="operator" value="*">&times;</button>
         <button type="button" class="operator" value="/">&divide;</button>
-    
+
         <button type="button" value="7">7</button>
         <button type="button" value="8">8</button>
         <button type="button" value="9">9</button>
-    
-    
+
         <button type="button" value="4">4</button>
         <button type="button" value="5">5</button>
         <button type="button" value="6">6</button>
-    
-    
+
         <button type="button" value="1">1</button>
         <button type="button" value="2">2</button>
         <button type="button" value="3">3</button>
-    
-    
+
         <button type="button" value="0">0</button>
         <button type="button" class="decimal function" value=".">.</button>
-        <button type="button" class="all-clear function" value="all-clear">AC</button>
-    
+        <button type="button" class="all-clear function" value="all-clear">
+          AC
+        </button>
+
         <button type="button" class="equal-sign operator" value="=">=</button>
-    
       </div>
+    </div>
+
+    <div class="links">
+      <p>
+        <a
+          href="https://github.com/toluagboola/currency-converter"
+          target="_blank"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+      </p>
+
+      <p>
+        Built by
+        <a href="https://github.com/toluagboola" target="_blank"
+          >Tolu Agboola</a
+        >
+      </p>
     </div>
 
     <script type="text/javascript" src="main.js"></script>
